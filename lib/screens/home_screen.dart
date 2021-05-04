@@ -30,7 +30,7 @@ class HomeScreen extends StatelessWidget {
                   decoration: const InputDecoration(labelText: 'Title'),
                   autofocus: true,
                   inputFormatters: [
-                    FilteringTextInputFormatter.allow(RegExp(r'[A-Za-z0-9]')),
+                    FilteringTextInputFormatter.allow(RegExp(r'[A-Za-z0-9 ]')),
                   ],
                   validator: (value) {
                     if (value.isEmpty) {
@@ -40,9 +40,8 @@ class HomeScreen extends StatelessWidget {
                   },
                   onFieldSubmitted: (value) => onSubmit(),
                   onSaved: (value) async {
-                    print(value.length);
                     await Provider.of<Storage>(ctx, listen: false)
-                        .addRecords(value);
+                        .addRecords(value.trim());
                     Navigator.of(ctx).pop();
                   },
                 ),
