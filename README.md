@@ -1,4 +1,4 @@
-# medtimer
+# Time Stamp
 
 A new Flutter project.
 
